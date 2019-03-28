@@ -1,0 +1,109 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+  <!-- End Navbar -->
+  <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image" style="background-image:url(../assets/img/header.jpg)"></div>
+        <div class="content">
+          <div class="container">
+            <div class="col-md-10 ml-auto mr-auto">
+              <div class="card card-login card-plain">
+              <form class="form" method="" action="">
+                  <div class="card-header text-center">
+                    <div class="logo-container">
+                      <!--<img src="../assets/img/now-logo.png" alt="">-->
+                      <i class="fas fa-cart-plus" style="font-size:100px; color: #f96332;"></i>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    
+
+                    <form class="form" method="" action="">
+                  
+                            <p style="text-transform: uppercase">Criar conta</p>
+                            
+                            <div class="row">
+                              <div class="input-group no-border input-lg">
+
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.razaoSocial" name="razaoSocial" class="form-control"  placeholder="razão social...">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.endereco.endereco" name="endereco" placeholder="endereço..." class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" [(ngModel)]="loja.eslogan" name="eslogan" placeholder="eslogan..."  class="form-control" />
+                                        </div>
+                                </div>
+                                
+                                <div class="col-sm-3 col-lg-3">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.endereco.bairro" name="bairro" placeholder="bairro..."  class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-lg-3">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.endereco.cep" name="cep" placeholder="cep..."  class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-lg-2">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.telefone" name="telefone" placeholder="telefone..." class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-lg-2">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.email" name="email" placeholder="email..."  class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-lg-2">
+                                        <div class="form-group">
+                                            <input type="text" [(ngModel)]="loja.cnpj" name="cnpj" placeholder="cnpj..." class="form-control" />
+                                        </div>
+                                </div>
+
+                                <div class="col-sm-3 col-lg-3">
+                                    <div class="form-group">
+                                        <input type="text"  [(ngModel)]="loja.endereco.uf" name="uf" placeholder="estado..."  class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-lg-3">
+                                    <div class="form-group">
+                                        <input type="text" [(ngModel)]="loja.endereco.cidade" name="cidade" placeholder="cidade..."  class="form-control" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-lg-12">
+                                        <div class="form-group">
+                                                <input type="button" (click)="cadastrar();" class="btn btn-primary btn-round btn-lg btn-block" value="Cadastrar"/>
+                                        </div>
+                                </div>
+                                      
+                              </div>
+                              
+                             
+
+                            </div>
+                              
+                     
+                        </form>
+
+                  </div>
+                  <div class="card-footer text-center">
+                    
+                  </div>  
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+          

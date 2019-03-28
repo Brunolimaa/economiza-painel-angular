@@ -1,0 +1,278 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
+  <!-- End Navbar -->
+  <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image" data-parallax="true"  style="background-image:url(../assets/img/bg5.jpg)"></div>
+        <div class="content">
+          <div class="container">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div class="card card-login card-plain">
+
+                  
+                     <div class="row">
+                        <div class="col-sm-12 col-lg-12">
+                          <input type="text" [(ngModel)]="filtro" (keyup)="filter(filtro)" placeholder="search" class="form-control col-sm-6 col-lg-3"/>
+                        </div>
+                      </div>
+
+   
+                        <button class="btn btn-primary btn-icon btn-round" title="Cadastrar" data-toggle="collapse" href="#collapseExample">
+                            <i class="fa fa-address-card"></i>
+                          </button>
+
+                        <button class="btn btn-success btn-icon btn-round" title="Importar excel" data-toggle="modal" data-target="#excelModal" aria-expanded="false" aria-controls="collapseExample">
+                          <i class="fa fa-file-excel"></i>
+                        </button>
+
+                      <div class="dropdown button-dropdown">
+                          <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+                            <span class="button-bar"></span>
+                            <span class="button-bar"></span>
+                            <span class="button-bar"></span>
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-header"><i class="fas fa-cog"></i>&nbsp;Configuração</a>
+                            <a class="dropdown-item" href="/perfil"><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
+                            <a class="dropdown-item" href="/lixeira"><i class="fas fa-trash"></i>&nbsp;Lixeira</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-envelope"></i>&nbsp;Notificação</a>
+                          </div>
+                        </div> 
+                    <div class="collapse" id="collapseExample">
+                      <div class="card card-body">
+
+                          <form class="form" method="" action="">
+                  
+                              <p class="category">Cadastrar Produtos</p>
+                              <div class="row">
+                                <div class="col-sm-6 col-lg-3">
+                                  <div class="form-group">
+                                    <input type="text" value="" placeholder="nome" class="form-control" />
+                                  </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-2">
+                                  <div class="form-group">
+                                    <input type="text" value="" placeholder="marca" class="form-control" />
+                                  </div>
+                                </div>
+                                <div class="col-sm-3 col-lg-2">
+                                      <div class="form-group">
+                                        <input type="text" value="" placeholder="descrição" class="form-control" />
+                                      </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-2">
+                                  <div class="form-group">
+                                    <input type="text" value="" placeholder="preço"  class="form-control" />
+                                  </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-2">
+                                      <div class="form-group">
+                                              <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Salvar</a>
+                                      </div>
+                                 </div>
+                              </div>
+                                
+                       
+                          </form>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                <!--<p class="category">Tabs with Background on Card</p>-->
+                <!-- Tabs with Background on Card -->
+                <div class="card" style="background-color:#ffffffeb">
+                  <div class="card-header">
+                    <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" style="background-color: #f96332">
+                      <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Produtos</a>
+                      </li>
+                      <!--<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Detalhes</a>
+                      </li>-->
+                      <!--<li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
+                      </li>-->
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content text-center">
+                      <div class="tab-pane active" id="home1" role="tabpanel">
+                          <div class="table-wrapper-scroll-y">
+                          <table class="table table table-fixed">
+                            <thead id="idHeaderTableProdutos">
+                              <tr>
+                                <th>#</th>
+                                <th>Produto</th>
+                                <th>Preco</th>
+                                <th>Ação</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of produtos">
+                                <!-- Monta Json do produto selecionado para alterar-->
+                                <input type="hidden" value='{"id":{{item.id}}, "nome":"{{item.nome}}", "marca":"{{item.marca}}", "descricao":"{{item.descricao}}", "preco":{{item.preco}}}' name="id" #idProduto>
+                                <!---->
+                                <td *ngIf="item.image == 'Naoencontrado.png' || item.image == 'naoencontrado.png'"><ngx-avatar name="{{item.nome}} {{item.marca}}" bgColor="{{item.cor}}"></ngx-avatar></td>
+                                <td *ngIf="item.image != 'naoencontrado.png' && item.image != 'Naoencontrado.png'" style="    margin-left: -187px;
+                                width: 66px;"><img src="http://res.cloudinary.com/hprhniuxo/image/upload/t_media_lib_thumb/{{item.image}}"/></td>
+                                <td><p class="nome-produto">{{item.nome}}</p>
+                                    {{item.marca}} {{item.descricao}}
+                                </td>
+                                <td style="color:green"><strong>{{item.preco |  currency:'BRL':true}}</strong></td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" class="btn btn-info" (click)="preencheFormModal(idProduto.value)" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" (click)="excluirProduto();" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                     <div class="tab-pane active" id="profile1" role="tabpanel">
+                       
+                      </div>
+                     <!-- <div class="tab-pane" id="profile1" role="tabpanel">
+                        <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                      </div>
+                      <div class="tab-pane" id="messages1" role="tabpanel">
+                        <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                      </div>
+                      <div class="tab-pane" id="settings1" role="tabpanel">
+                        <p>
+                          "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+                        </p>
+                      </div>-->
+                    </div>
+                  </div>
+                </div>
+                <!-- End Tabs on plain Card -->
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Produto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          
+                              <form>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="nome">Nome</label>
+                                      <input type="text" [(ngModel)]="produto.nome" name="nome" class="form-control" id="nome" placeholder="ex.:Arroz">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="marca">Marca</label>
+                                      <input type="text" [(ngModel)]="produto.marca" name="marca" class="form-control" id="marca" placeholder="ex.:Superum">
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="descricao">Descrição</label>
+                                        <input type="text" [(ngModel)]="produto.descricao" name="descricao" class="form-control" id="descricao" placeholder="ex.: 5kg">
+                                       </div> 
+                                       <div class="form-group col-md-6">
+                                        <label for="preco">Preço</label>
+                                        <input type="text"  [(ngModel)]="produto.preco" name="preco" class="form-control" id="preco" placeholder="0,0">
+                                        </div>
+                                  </div>
+                                  <!--<div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="inputCity">City</label>
+                                      <input type="text" class="form-control" id="inputCity">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="inputState">State</label>
+                                      <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <label for="inputZip">Zip</label>
+                                      <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                  </div> -->
+                                </form>
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarAlterarProduto()">Salvar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Fim Modal-->
+                   <!-- Modal lista excel -->
+                  <div class="modal fade bd-example-modal-lg" id="excelModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Produto</h5>
+                          <div class="col-sm-12 col-lg-12">
+                              <input id="my-file-selector" type="file" (change)="uploadData($event)" [(ngModel)]="fileUpload" name="uploadExcel" class="form-control col-sm-6 col-lg-3"/>
+                          </div>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+
+                        </div>
+                        <div class="modal-body">
+                          <div [hidden]="mostrarLista">
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Atenção!</strong> a planilha deve conter as seguintes colunas.
+                             </div>
+                            <img src="../assets/img/exemploexcel.jpg"/>
+                          </div>
+                          <div [hidden]="!mostrarLista">
+                            <div class="table-wrapper-scroll-y">
+                              <table class="table table-striped">
+                                <thead id="idHeaderTableProdutos">
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>Marca</th>
+                                    <th>Descrição</th>
+                                    <th>Preço</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of produtosExecel">
+                                    <td><ngx-avatar name="{{item.nome}} {{item.marca}}" bgColor="{{item.cor}}"></ngx-avatar></td>
+                                    <td>{{item.nome}}</td>
+                                    <td>{{item.marca}}</td>
+                                    <td>{{item.descricao}}</td>
+                                    <td>R$ {{item.preco}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="totalLista"><strong>Total:</strong> {{totalListaExcel}}</div>
+                           </div>
+                          </div>
+                          <div class="modal-footer" [hidden]="!mostrarLista">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="limparLista()">Fechar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarAlterarProduto()">Salvar</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Fim Modal-->
+        </div>
+      </div>
+          

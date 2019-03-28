@@ -1,0 +1,62 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
+  <!-- End Navbar -->
+  <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image" style="background-image:url(../assets/img/login.jpg)"></div>
+    <div class="content">
+      <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+          <div class="card card-login card-plain">
+            <form [formGroup]="loginForm" class="form" (submit)="login()">
+                <div class="card-header text-center">
+                  <div class="logo-container">
+                    <!-- <img src="../assets/img/now-logo.png" alt=""> -->
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="input-group no-border input-lg">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="now-ui-icons users_circle-08"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="userName" placeholder="email...">
+                    
+                    <small *ngIf="loginForm.get('userName').errors?.required" class="text-danger d-block mt-2">
+                      Usuario obrigatorio!
+                    </small>
+                  </div>
+                  <div class="input-group no-border input-lg">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="now-ui-icons text_caps-small"></i>
+                      </span>
+                    </div>
+                    <input type="password" placeholder="password..." formControlName="password" class="form-control" />
+                   
+                    <small *ngIf="loginForm.get('password').errors?.required" class="text-danger d-block mt-2">
+                      Senha obrigatorio!
+                    </small>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  <!--<a href="/cadastro" class="btn btn-primary btn-round btn-lg btn-block">Entrar</a>-->
+                  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">Entrar</button>
+                  <div class="pull-left">
+                    <h6>
+                      Não tem uma conta? <a href="/new-cadastro" class="link">Crie uma!</a>
+                    </h6>
+                  </div>
+                  <div class="pull-right">
+                    <h6>
+                      <!--<a href="#pablo" class="link">Need Help?</a>-->
+                    </h6>
+                  </div>
+                </div>  
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+        
